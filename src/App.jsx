@@ -1,27 +1,20 @@
-import { useState } from 'react'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home   from './pages/Home'
-import About  from './pages/About'
-import Detect from './pages/Detect'
+import Home from './pages/Home'
+import About from './pages/About'
 
-export default function App() {
-  const [page, setPage] = useState('home')
-
-  function renderPage() {
-    switch (page) {
-      case 'home':   return <Home setPage={setPage} />
-      case 'about':  return <About />
-      case 'detect': return <Detect />
-      default:       return <Home setPage={setPage} />
-    }
-  }
-
+// Main App component - sets up routing
+function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0a0a0a] bg-grid">
-      <Navbar currentPage={page} setPage={setPage} />
-      {renderPage()}
-      <Footer />
+    <div className="app-wrapper">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   )
 }
+
+export default App

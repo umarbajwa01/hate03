@@ -1,97 +1,116 @@
-export default function Home({ setPage }) {
+import React, { useState } from 'react'
+import './Home.css'
+
+// Home page - main detection interface
+function Home() {
+  // State for user input text
+  const [inputText, setInputText] = useState('')
+
+  // State for the result from the API
+  const [result, setResult] = useState(null)
+
+  // State to show loading while waiting for response
+  const [isLoading, setIsLoading] = useState(false)
+
+  // State for error message if API fails
+  const [error, setError] = useState(null)
+
+  // This function runs when user clicks the "Detect" button
+  const handleDetect = async () => {
+    // Don't do anything if input is empty
+    if (inputText.trim() === '') {
+      setError('Please enter some text first.')
+      setResult(null)
+      return
+    }
+
+    // Reset previous results and errors
+    setError(null)
+    setResult(null)
+    setIsLoading(true)
+
+    try {
+      // Send POST request to the Flask backend
+      const response = await fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: inputText }),
+      })
+
+      // Check if request was successful
+      if (!response.ok) {
+        throw new Error('Server returned an error. Please try again.')
+      }
+
+      const data = await response.json()
+
+      // Save the result to display on screen
+      setResult(data)
+    } catch (err) {
+      // Show error if something went wrong (e.g., server not running)
+      setError('Could not connect to the server. Make sure the backend is running on port 5000.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Clear the input and result
+  const handleClear = () => {
+    setInputText('')
+    setResult(null)
+    setError(null)
+  }
+
   return (
-    <main className="flex-1 flex flex-col items-center justify-center px-6 py-24 text-center relative overflow-hidden">
+    <div className="home-container">
+      <h1 className="main-heading">Hate Speech Detection System</h1>
+      <p className="sub-heading">Enter text below to check if it contains hate speech</p>
 
-      {/* Background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[480px] h-[280px]
-                      bg-[radial-gradient(ellipse_at_center,rgba(255,214,10,0.08)_0%,transparent_70%)]
-                      blur-3xl pointer-events-none" />
-
-      {/* Badge */}
-      <div className="animate-fade-up inline-flex items-center gap-2 mb-8
-                      bg-[#ffd60a15] border border-[#ffd60a40] text-[#ffd60a]
-                      text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#ffd60a] animate-pulse-dot" />
-        ML-Model Detection System
+      {/* Text input area */}
+      <div className="input-section">
+        <textarea
+          className="text-input"
+          placeholder="Type or paste your text here..."
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          rows={6}
+        />
       </div>
 
-      {/* Title */}
-      <h1 className="animate-fade-up-1 font-display text-[clamp(3.5rem,10vw,7rem)]
-                     tracking-wider text-gray-100 leading-none mb-6">
-        Hate Speech
-        <span className="block text-[#ffd60a]">Detection</span>
-      </h1>
-
-      {/* Subtitle */}
-      <p className="animate-fade-up-2 max-w-lg text-[1.05rem] text-gray-400 leading-relaxed mb-12">
-        An intelligent system that analyzes text content and identifies hate speech
-        in real time — helping make online platforms safer and more inclusive for everyone.
-      </p>
-
-      {/* Actions */}
-      <div className="animate-fade-up-3 flex items-center gap-4 flex-wrap justify-center mb-20">
-        <button
-          onClick={() => setPage('detect')}
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded
-                     bg-[#ffd60a] text-black font-bold text-base
-                     transition-all duration-200
-                     hover:bg-[#ffe033] hover:-translate-y-0.5
-                     hover:shadow-[0_8px_32px_rgba(255,214,10,0.3)]"
-        >
-           Try Detection
+      {/* Action buttons */}
+      <div className="button-group">
+        <button className="detect-btn" onClick={handleDetect} disabled={isLoading}>
+          {isLoading ? 'Detecting...' : 'Detect'}
         </button>
-        <button
-          onClick={() => setPage('about')}
-          className="px-7 py-3.5 rounded text-base font-medium text-gray-400
-                     border border-[#2a2a2a] transition-all duration-200
-                     hover:text-gray-100 hover:border-[#ffd60a50] hover:bg-[#ffd60a15]"
-        >
-          Learn More
+        <button className="clear-btn" onClick={handleClear}>
+          Clear
         </button>
       </div>
 
-      {/* Stats */}
-      <div className="animate-fade-up-4 flex items-center gap-12 flex-wrap justify-center mb-16">
-        {[
-          { value: '80%+', label: 'Accuracy' },
-          { value: '<5s',  label: 'Response Time' },
-          { value: 'ML',   label: 'Powered' },
-        ].map((stat, i, arr) => (
-          <div key={stat.label} className="flex items-center gap-12">
-            <div className="text-center">
-              <span className="block font-display text-4xl text-[#ffd60a] tracking-wider">
-                {stat.value}
-              </span>
-              <span className="text-xs text-[#444] uppercase tracking-widest font-medium">
-                {stat.label}
-              </span>
-            </div>
-            {i < arr.length - 1 && (
-              <div className="w-px h-10 bg-[#2a2a2a]" />
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Show error message if something went wrong */}
+      {error && (
+        <div className="error-box">
+          ⚠️ {error}
+        </div>
+      )}
 
-      {/* Feature chips */}
-      <div className="animate-fade-up-5 flex gap-3 flex-wrap justify-center">
-        {[
-          { icon: '', label: 'Machine Learning' },
-          { icon: '', label: 'Real-time Analysis' },
-          { icon: '', label: 'Confidence Score' },
-          { icon: '', label: 'Detect English Text' },
-        ].map((chip) => (
-          <div
-            key={chip.label}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full
-                       bg-[#111111] border border-[#1f1f1f] text-gray-400 text-sm font-medium
-                       transition-all duration-200 hover:border-[#2a2a2a] hover:text-gray-100"
-          >
-            <span>{chip.icon}</span>
-            {chip.label}
-          </div>
-        ))}
-      </div>
-    </main>
+      {/* Show result if we got a response from backend */}
+      {result && (
+        <div className={`result-box ${result.prediction === 'Hate' ? 'result-hate' : 'result-not-hate'}`}>
+          <p className="result-label">Result:</p>
+          <p className="result-value">
+            {result.prediction === 'Hate' ? '🚫 Hate Speech Detected' : '✅ Not Hate Speech'}
+          </p>
+          {/* Show confidence if backend provides it */}
+          {result.confidence && (
+            <p className="result-confidence">Confidence: {result.confidence}</p>
+          )}
+        </div>
+      )}
+    </div>
   )
 }
+
+export default Home

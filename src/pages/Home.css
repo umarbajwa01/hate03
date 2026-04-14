@@ -1,0 +1,155 @@
+/* Home page styles */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  max-width: 750px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Main title */
+.main-heading {
+  color: #f5c518;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* Subtitle below main heading */
+.sub-heading {
+  color: #bbbbbb;
+  font-size: 15px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+/* Textarea wrapper */
+.input-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* The textarea where user types */
+.text-input {
+  width: 100%;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 2px solid #f5c518;
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  resize: vertical;
+  outline: none;
+}
+
+.text-input::placeholder {
+  color: #666666;
+}
+
+.text-input:focus {
+  border-color: #ffdd57;
+}
+
+/* Button row */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* Detect button - yellow */
+.detect-btn {
+  background-color: #f5c518;
+  color: #111111;
+  border: none;
+  padding: 12px 35px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.detect-btn:hover {
+  background-color: #ffdd57;
+}
+
+.detect-btn:disabled {
+  background-color: #888800;
+  cursor: not-allowed;
+}
+
+/* Clear button - grey outline */
+.clear-btn {
+  background-color: transparent;
+  color: #cccccc;
+  border: 2px solid #555555;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.clear-btn:hover {
+  border-color: #aaaaaa;
+  color: #ffffff;
+}
+
+/* Error message box */
+.error-box {
+  width: 100%;
+  background-color: #2a1a1a;
+  color: #ff6b6b;
+  border: 1px solid #cc0000;
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Result box shared styles */
+.result-box {
+  width: 100%;
+  border-radius: 6px;
+  padding: 20px 24px;
+  text-align: center;
+  border: 2px solid;
+}
+
+/* Hate speech detected - red tint */
+.result-hate {
+  background-color: #1f0a0a;
+  border-color: #cc2200;
+}
+
+/* Not hate speech - green tint */
+.result-not-hate {
+  background-color: #0a1f0a;
+  border-color: #22aa44;
+}
+
+.result-label {
+  color: #aaaaaa;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.result-confidence {
+  color: #bbbbbb;
+  font-size: 14px;
+}

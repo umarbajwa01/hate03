@@ -1,116 +1,73 @@
-const cards = [
-  {
-    icon: '🎯',
-    title: 'Our Purpose',
-    body: 'HateGuard was built to help moderate online content automatically, flagging harmful language before it spreads and causes real-world harm to individuals and communities.',
-  },
-  {
-    icon: '🧠',
-    title: 'Machine Learning',
-    body: 'Powered by a trained NLP classifier, the system understands linguistic patterns and context to distinguish between hate speech and legitimate expression with high accuracy.',
-  },
-  {
-    icon: '🌍',
-    title: 'Societal Impact',
-    body: 'Hate speech online can lead to discrimination, harassment, and violence. Automated detection at scale allows platforms to act quickly and protect vulnerable users.',
-  },
-  {
-    icon: '📊',
-    title: 'Confidence Scoring',
-    body: 'Every prediction comes with a confidence percentage, giving moderators and developers clear insight into how certain the model is about each classification.',
-  },
-]
+import React from 'react'
+import './About.css'
 
-const steps = [
-  { num: '01', title: 'Input Text',          desc: 'User submits text through the detection interface.' },
-  { num: '02', title: 'Pre-processing',       desc: 'The backend cleans and tokenizes the input for the model.' },
-  { num: '03', title: 'ML Classification',    desc: 'A trained classifier predicts whether the text contains hate speech.' },
-  { num: '04', title: 'Result + Confidence',  desc: 'The system returns the verdict and a confidence percentage instantly.' },
-]
-
-const techs = ['Python', 'Flask', 'scikit-learn', 'NLTK', 'React', 'Vite', 'REST API']
-
-export default function About() {
+// About page - explains what this project is and why it matters
+function About() {
   return (
-    <main className="flex-1 max-w-4xl mx-auto w-full px-6 py-16">
+    <div className="about-container">
+      <h1 className="about-heading">About This Project</h1>
 
-      {/* Header */}
-      <header className="mb-12 animate-fade-up">
-        <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-[#ffd60a] mb-3">
-          Project Overview
-        </span>
-        <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] text-gray-100 mb-4">
-          ABOUT THE SYSTEM
-        </h1>
-        <p className="text-lg text-gray-400 leading-relaxed border-l-[3px] border-[#ffd60a] pl-5 mt-6">
-          HateGuard is an AI-powered hate speech detection tool designed to make
-          online spaces safer. It uses machine learning to analyze text and flag
-          harmful content in under a second.
+      {/* Section 1 - What is this project */}
+      <div className="about-card">
+        <h2 className="card-title">📌 What is this?</h2>
+        <p className="card-text">
+          The Hate Speech Detection System is a web application that uses a
+          machine learning model to analyze text and determine whether it
+          contains hate speech or not. The user enters any text, and the
+          system predicts if the text is harmful or safe.
         </p>
-      </header>
-
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6 animate-fade-up-1">
-        {cards.map((card) => (
-          <div
-            key={card.title}
-            className="group relative bg-[#111111] border border-[#1f1f1f] rounded-xl p-7
-                       transition-all duration-200 overflow-hidden
-                       hover:border-[#2a2a2a] hover:bg-[#181818] hover:-translate-y-0.5
-                       hover:shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
-          >
-            {/* Top accent bar */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#ffd60a]
-                            scale-x-0 origin-left transition-transform duration-300
-                            group-hover:scale-x-100" />
-            <span className="text-3xl mb-3 block">{card.icon}</span>
-            <h3 className="font-display text-xl text-gray-100 mb-2 tracking-wide">{card.title}</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">{card.body}</p>
-          </div>
-        ))}
+        <p className="card-text">
+          The frontend (this website) is built using React and Vite. It
+          communicates with a Python Flask backend that runs the actual
+          machine learning model for prediction.
+        </p>
       </div>
 
-      {/* How it works */}
-      <section className="mt-12 animate-fade-up-2">
-        <h2 className="font-display text-3xl text-gray-100 mb-6 tracking-wide">HOW IT WORKS</h2>
-        <div className="flex flex-col divide-y divide-[#1f1f1f] rounded-xl overflow-hidden border border-[#1f1f1f]">
-          {steps.map((step) => (
-            <div
-              key={step.num}
-              className="flex items-start gap-5 bg-[#111111] px-6 py-5
-                         transition-colors duration-200 hover:bg-[#181818]"
-            >
-              <span className="font-mono text-xs font-bold text-[#ffd60a]
-                               bg-[#ffd60a15] border border-[#ffd60a30]
-                               px-2 py-0.5 rounded flex-shrink-0 mt-0.5 tracking-wider">
-                {step.num}
-              </span>
-              <div>
-                <strong className="block text-sm font-semibold text-gray-100 mb-0.5">{step.title}</strong>
-                <span className="text-sm text-gray-400">{step.desc}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Section 2 - Why it is important */}
+      <div className="about-card">
+        <h2 className="card-title">⚠️ Why is it Important?</h2>
+        <p className="card-text">
+          Hate speech online is a growing problem. Every day, millions of
+          messages, comments, and posts are shared on social media platforms.
+          Some of these contain language that targets people based on their
+          religion, race, gender, or other characteristics.
+        </p>
+        <p className="card-text">
+          Manually reviewing all this content is impossible. This is where
+          automated hate speech detection systems become important — they
+          can quickly scan large amounts of text and flag harmful content
+          before it spreads further.
+        </p>
+      </div>
 
-      {/* Tech stack */}
-      <section className="mt-12 animate-fade-up-3">
-        <h2 className="font-display text-3xl text-gray-100 mb-6 tracking-wide">TECH STACK</h2>
-        <div className="flex flex-wrap gap-2">
-          {techs.map((t) => (
-            <span
-              key={t}
-              className="font-mono text-xs font-bold text-gray-400
-                         bg-[#111111] border border-[#1f1f1f] px-4 py-2 rounded
-                         transition-all duration-200
-                         hover:text-[#ffd60a] hover:border-[#ffd60a40] hover:bg-[#ffd60a10]"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </section>
-    </main>
+      {/* Section 3 - Impact on society */}
+      <div className="about-card">
+        <h2 className="card-title">🌍 Impact on Society</h2>
+        <ul className="impact-list">
+          <li>Helps create safer online spaces for everyone</li>
+          <li>Reduces harm caused by targeted harassment and abuse</li>
+          <li>Supports social media platforms in content moderation</li>
+          <li>Protects vulnerable communities from online hate</li>
+          <li>Can be used in schools, forums, and comment sections</li>
+          <li>Encourages responsible use of AI for social good</li>
+        </ul>
+      </div>
+
+      {/* Tech stack info */}
+      <div className="about-card">
+        <h2 className="card-title">🛠️ Tech Stack</h2>
+        <p className="card-text">
+          <span className="tech-label">Frontend:</span> React, Vite, React Router
+        </p>
+        <p className="card-text">
+          <span className="tech-label">Backend:</span> Python, Flask
+        </p>
+        <p className="card-text">
+          <span className="tech-label">Model:</span> Machine Learning (NLP-based classifier)
+        </p>
+      </div>
+    </div>
   )
 }
+
+export default About
