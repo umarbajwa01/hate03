@@ -44,12 +44,12 @@
 /* Yellow text */
 .yellow-text {
   color: #f5c518;
-  text-shadow: 0 0 8px rgba(14, 13, 13, 0.6);
+  text-shadow: 0 0 8px rgba(18, 17, 19, 0.6);
 }
 
 /* Small text */
 .hero-subtitle {
-  color: #cccccc;
+  color: #81d140;
   font-size: 16px;
   margin-top: 5px;
 }
@@ -123,7 +123,7 @@
   border-radius: 6px;
   padding: 14px;
   font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
+   font-family: Arial, sans-serif;
   resize: vertical;
   outline: none;
 }
@@ -159,11 +159,11 @@
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+   font-family: Arial, sans-serif;
 }
 
 .detect-btn:hover {
-  background-color: #ffdd57;
+  background-color: #b6b5b0;
 }
 
 .detect-btn:disabled {
@@ -180,11 +180,11 @@
   font-size: 15px;
   border-radius: 6px;
   cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+   font-family: Arial, sans-serif;
 }
 
 .clear-btn:hover {
-  color: #ffffff;
+  color: #d8ee13;
   border-color: #888888;
 }
 
