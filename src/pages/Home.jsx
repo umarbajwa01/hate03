@@ -51,28 +51,36 @@ function Home() {
     <div className="home-wrapper">
 
       {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-badge">AI-Powered Safety Tool</div>
-        <h1 className="hero-title">Hate Speech Detection System</h1>
-        <p className="hero-subtitle">
-          Analyze any text instantly using machine learning to detect harmful or hateful language.
-        </p>
-      </div>
+     <div className="hero-section">
+  <div className="hero-badge">AI-Powered System</div>
+
+  <h1 className="hero-title">
+    <span className="white-text">HATE SPEECH</span>
+  </h1>
+
+  <h2 className="hero-subtitle-title">
+    <span className="yellow-text">DETECTION</span>
+  </h2>
+
+  {/* <p className="hero-subtitle">
+    Detection System
+  </p> */}
+</div>
 
       {/* Stats Row */}
       <div className="stats-row">
         <div className="stat-card">
-          <span className="stat-number">95%</span>
+          <span className="stat-number">80+%</span>
           <span className="stat-label">Accuracy</span>
         </div>
         <div className="stat-card">
-          <span className="stat-number">&lt;1s</span>
+          <span className="stat-number">&lt;4s</span>
           <span className="stat-label">Response Time</span>
         </div>
-        <div className="stat-card">
+        {/* <div className="stat-card">
           <span className="stat-number">2</span>
           <span className="stat-label">Classes Detected</span>
-        </div>
+        </div> */}
         <div className="stat-card">
           <span className="stat-number">NLP</span>
           <span className="stat-label">Model Type</span>
@@ -105,7 +113,7 @@ function Home() {
 
         {/* Error message */}
         {error && (
-          <div className="error-box">⚠️ {error}</div>
+          <div className="error-box"> {error}</div>
         )}
 
         {/* Result display */}
@@ -113,7 +121,7 @@ function Home() {
           <div className={`result-box ${result.prediction === 'Hate' ? 'result-hate' : 'result-not-hate'}`}>
             <p className="result-label">Detection Result</p>
             <p className="result-value">
-              {result.prediction === 'Hate' ? '🚫 Hate Speech Detected' : '✅ Not Hate Speech'}
+              {result.prediction === 'Hate' ? ' Hate Speech Detected' : '✅ Not Hate Speech'}
             </p>
             {result.confidence && (
               <p className="result-confidence">Confidence: {result.confidence}</p>
@@ -128,7 +136,7 @@ function Home() {
         <div className="features-grid">
 
           <div className="feature-card">
-            <div className="feature-icon">⚡</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">Fast Detection</h3>
             <p className="feature-text">
               Get instant results in under a second. The ML model processes
@@ -137,7 +145,7 @@ function Home() {
           </div>
 
           <div className="feature-card">
-            <div className="feature-icon">🧠</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">ML Powered</h3>
             <p className="feature-text">
               Built using a trained Natural Language Processing model that
@@ -146,7 +154,7 @@ function Home() {
           </div>
 
           <div className="feature-card">
-            <div className="feature-icon">🔒</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">Safe & Private</h3>
             <p className="feature-text">
               Your text is only used for prediction. No data is stored or
@@ -155,7 +163,7 @@ function Home() {
           </div>
 
           <div className="feature-card">
-            <div className="feature-icon">🌍</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">Social Impact</h3>
             <p className="feature-text">
               Helps create safer online spaces by identifying and flagging
@@ -164,7 +172,7 @@ function Home() {
           </div>
 
           <div className="feature-card">
-            <div className="feature-icon">📊</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">Clear Results</h3>
             <p className="feature-text">
               Results are shown in a simple color-coded format — red for
@@ -173,7 +181,7 @@ function Home() {
           </div>
 
           <div className="feature-card">
-            <div className="feature-icon">🛠️</div>
+            <div className="feature-icon"></div>
             <h3 className="feature-title">Easy to Use</h3>
             <p className="feature-text">
               No technical knowledge needed. Just paste your text, click

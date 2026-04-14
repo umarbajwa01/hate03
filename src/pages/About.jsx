@@ -19,7 +19,7 @@ function About() {
       <div className="about-card">
         <div className="card-left-bar"></div>
         <div className="card-body">
-          <div className="card-icon">📌</div>
+          <div className="card-icon"></div>
           <h2 className="card-title">What is This Project?</h2>
           <p className="card-text">
             The Hate Speech Detection System is a web application that uses a machine
@@ -40,7 +40,7 @@ function About() {
       <div className="about-card">
         <div className="card-left-bar"></div>
         <div className="card-body">
-          <div className="card-icon">⚠️</div>
+          <div className="card-icon"></div>
           <h2 className="card-title">Why is it Important?</h2>
           <p className="card-text">
             Hate speech online is a growing and serious problem. Every day, millions of
@@ -61,7 +61,7 @@ function About() {
       <div className="about-card">
         <div className="card-left-bar"></div>
         <div className="card-body">
-          <div className="card-icon">🌍</div>
+          <div className="card-icon"></div>
           <h2 className="card-title">Impact on Society</h2>
           <div className="impact-grid">
             <div className="impact-item">
@@ -96,7 +96,7 @@ function About() {
       <div className="about-card">
         <div className="card-left-bar"></div>
         <div className="card-body">
-          <div className="card-icon">🛠️</div>
+          <div className="card-icon"></div>
           <h2 className="card-title">Tech Stack</h2>
           <div className="tech-grid">
             <div className="tech-item">
@@ -123,7 +123,7 @@ function About() {
       <div className="about-card">
         <div className="card-left-bar"></div>
         <div className="card-body">
-          <div className="card-icon">👨‍💻</div>
+          <div className="card-icon"></div>
           <h2 className="card-title">Developer Note</h2>
           <p className="card-text">
             This project was developed as a Final Year Project to demonstrate how
